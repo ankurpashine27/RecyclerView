@@ -1,13 +1,16 @@
 package Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.dsc.android.recyclerview.DetailsActivity;
 import com.dsc.android.recyclerview.R;
 
 import java.util.List;
@@ -44,7 +47,7 @@ public class MyAdaptor extends RecyclerView.Adapter<MyAdaptor.ViewHolder> {
         return listItems.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public TextView name, description;
 
@@ -53,6 +56,23 @@ public class MyAdaptor extends RecyclerView.Adapter<MyAdaptor.ViewHolder> {
 
             name = (TextView) itemView.findViewById(R.id.TitleId);
             description = (TextView) itemView.findViewById(R.id.DescriptionId);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+
+            int position = getAdapterPosition();
+
+            ListItem item = listItems.get(position);
+
+            Intent intent = new Intent(context, DetailsActivity.class);
+            intent.putExtra("title", item.getName());
+            intent.putExtra("description", item.getDescription());
+
+            context.startActivity(intent);
+            //Toast.makeText(context, item.getName(), Toast.LENGTH_LONG).show();
         }
     }
 }

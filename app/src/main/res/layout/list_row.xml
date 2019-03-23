@@ -6,14 +6,16 @@
     <android.support.v7.widget.CardView
         android:id="@+id/CardViewId"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/cardview_compat_inset_shadow">
 
         <LinearLayout
             android:id="@+id/LinerLayoutId"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingLeft="10dp"
-            android:paddingTop="5dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
             android:orientation="vertical">
 
             <TextView
